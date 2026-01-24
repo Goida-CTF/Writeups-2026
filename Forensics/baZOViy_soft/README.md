@@ -19,40 +19,40 @@
 Нам дается некоторая легенда и архив. Распакуя его, увидим .vdi образ диска компьютера Миши.
 Откроем его в любой удобной вам программе для анализа образов дисков. Я буду использовать R-Studio, т.к эта программа прекрасно работает с .vdi образами и позволяет быстро и удобно получить первичную картину диска для дальнейшего более глубокого анализа в других программах.
 
-![Main drive tree](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/rstudio-1.png)
+![Main drive tree](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/rstudio-1.png)
 
 На машине есть только один пользователь - `Admin`.
 Перейдем в его рабочую папку и осмотримся.
 В рабочей папке замечаем папку DISTR. Несложными размышлениями можно прийти к тому, что эта папка содержит дистрибутивы программ. Заходим туда:
 
-![DISTR dir](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/rstudio-2.png)
+![DISTR dir](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/rstudio-2.png)
 
 Видим файл под названием `baZOViy_soft_installer.exe`. Видимо, это и есть установщик того софта, который Мише передали на флешке. Миша, как умный медведь, конечно скопировал его на свой диск в отдельную папку с дистрибутивами, чтобы у него под рукой всегда был инсталлятор на всякий случай.
 Сохраним себе этот установщик, перейдем на тестовую виртуальную машину и посмотрим, что он вообще делает.
 
-![Installer main page](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/installer-mainpage.png)
+![Installer main page](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/installer-mainpage.png)
 
 Установим программу. Если быть достаточно внимательным, можно заметить, что на этапе установки у нас на некоторое количество времени на экране появляется окно Powershell, которое затем исчезает. Это определенно настораживает - с установщиком что-то нечисто.
 Этот установщик собран с использованием ПО InnoSetup - это можно узнать скормив его Detect it Easy:
 
-![Installer DIE](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/die-installer.png)
+![Installer DIE](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/die-installer.png)
 
 Несложным поиском в сети Интернет находим софт под названием [InnoUnpacker](https://github.com/jrathlev/InnoUnpacker-Windows-GUI). Читаем ридми, скачиваем подходящую нам версию программы и пробуем применить ее на наш установщик:
 
-![Unpacking installer](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/installer-extracted.png)
+![Unpacking installer](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/installer-extracted.png)
 
 Отлично - получаем установочный скрипт и саму программу, которую инсталлер устанавливает на компьютер.
 Посмотрим, что находится в скрипте:
 
-![Installer script](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/installer-script.png)
+![Installer script](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/installer-script.png)
 
 Видим причину появления окна Powershell - установщику была дана команда выполнить некоторый закодированный в Base64 скрипт. Посмотрим, что в нем используя CyberChef:
 
-![Decoded pwsh script](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/decrypted-installer-script.png)
+![Decoded pwsh script](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/decrypted-installer-script.png)
 
 Видим вредоносный немножко обфусцированный скрипт. Внимание привлекает Base64-строка, которая задана в скрипте плейнтекстом. Декодируем:
 
-![FLAG part1](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/part1-decrypted.png)
+![FLAG part1](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/part1-decrypted.png)
 
 Получаем первую часть флага.
 
@@ -64,11 +64,11 @@
 
 Я буду использовать [any.run](https://app.any.run/). Выгружаем туда бинарь, ждем пока закончится анализ и видим нестандартно большое количество DNS-запросов, совершенных машиной. Скрываем запросы до вайтлист-доменов и смотрим на итоговый список:
 
-![Suspicious DNS activity](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/sussy-dns-detected.png)
+![Suspicious DNS activity](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/sussy-dns-detected.png)
 
 Похоже на DNS-beacon. Домен четвертого уровня в запросах постоянно изменяется, при этом его значения очень уж похожи на hex-байтики. Перепишем все значения домена четвертого уровня в CyberChef (благо всего запросов не особо много) и посмотрим, что он нам скажет:
 
-![FLAG part2](https://github.com/k10nex/goidactf2026-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/part2-decrypted.png)
+![FLAG part2](https://github.com/k10nex/goidactf2026quals-tasks/blob/main/Forensics/baZOViy_soft/pics-for-writeup/part2-decrypted.png)
 
 Получаем вторую часть флага.
 
