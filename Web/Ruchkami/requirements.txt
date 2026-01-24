@@ -1,0 +1,6 @@
+flask
+selenium
+requests
+jinja2
+werkzeug
+urllib3

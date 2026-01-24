@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Submit</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #status {
+            margin-top: 10px;
+        }
+
+        #back {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+<a id="back" href="/">Back</a>
+
+<div id="container">
+    Create new admin
+    <input type="text" id="LoginInput" placeholder="Enter login">
+    <button onclick="submitURL()">Submit</button>
+    <div id="status"></div>
+</div>
+
+
+<script>
+    function submitURL() {
+        const new_admin_login = document.getElementById('LoginInput').value;
+        const statusDiv = document.getElementById('status');
+        const params = new URLSearchParams({ new_admin_login: new_admin_login });
+
+        fetch('/create_admin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: params.toString()
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    statusDiv.textContent = "NOOOOO YOU ARE NOT PUTIN TO DO THAT!!!!!!! \n 401 MOTHER FUCKER!!!!!"
+                } else {
+                    statusDiv.textContent = `Status: ${response.status}`;
+                }
+                return response.status; // Also read the response body (if any)
+            });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ruchkami:latest
+    ports:
+      - "31337:31337"
+    container_name: ruchkami-web
+    restart: unless-stopped
