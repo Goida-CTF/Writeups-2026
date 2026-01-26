@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали заказа - Магазин "Орешник"</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="/" class="logo">Магазин "Орешник"</a></h1>
+            <nav>
+                <a href="/">Главная</a>
+                {{if .LoggedIn}}
+                    <span>Привет, {{.Username}}!</span>
+                    <a href="/my-purchases">Мои покупки</a>
+                    <a href="/logout">Выйти</a>
+                {{else}}
+                    <a href="/login">Войти</a>
+                    <a href="/register">Регистрация</a>
+                {{end}}
+            </nav>
+        </header>
+        <main>
+            <h2>Детали заказа #{{.Purchase.ID}}</h2>
+            {{if .Purchase}}
+            <div class="product-card">
+                <h3>{{.Purchase.Product.Name}}</h3>
+                <p>{{.Purchase.Product.Description}}</p>
+                <p class="price">Цена: {{.Purchase.Product.Price}} руб.</p>
+                <p>Куплено: {{.Purchase.CreatedAt.Format "02.01.2006 15:04"}}</p>
+            </div>
+            {{else}}
+            <p>Заказ не найден.</p>
+            {{end}}
+        </main>
+    </div>
+</body>
+</html>

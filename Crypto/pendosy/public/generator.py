@@ -10,7 +10,7 @@ Q = Point(
     P256,
 )
 
-class DualEC:
+class DGen:
     def __init__(self):
         self.Q = Q
 

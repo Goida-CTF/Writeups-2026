@@ -1,0 +1,22 @@
+services:
+  app-oreshnik:
+    build: .
+    # ports:
+    #   - "8099:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=goidactf
+      - DB_PASSWORD=goidactfRNTYMMY
+      - DB_NAME=goidactf
+      - DB_PORT=5432
+      - FLAG=goidactf{or3shk1_b1g_b0b_1s_h3r3}
+
+  db-oreshnik:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_USER=goidactf
+      - POSTGRES_PASSWORD=goidactfRNTYMMY
+      - POSTGRES_DB=goidactf
+  

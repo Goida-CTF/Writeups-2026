@@ -1,11 +1,11 @@
-from generator import DualEC
+from generator import DGen
 from Crypto.Util.number import getPrime, long_to_bytes
 from random import seed, randbytes
 
 class RSA:
     def __init__(self, p: int = 0, q: int = 0):
         if p == 0 or q == 0:
-            generator = DualEC()
+            generator = DGen()
             p = _generate_prime(s=generator.get_random_seed())
             q = _generate_prime(s=generator.get_random_seed())
 
