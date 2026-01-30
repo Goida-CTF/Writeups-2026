@@ -1,0 +1,20 @@
+name: task-not-psp-2
+services:
+  task:
+    build: .
+    restart: always
+    expose:
+      - 8000
+    networks:
+      - net
+    environment:
+      - FLAG=${FLAG}
+    labels:
+      - owl.proxy=true
+      - owl.proxy.port=8000
+      - owl.label.conntype=http
+
+networks:
+  net:
+    external:
+      name: ctfd_frp_containers
