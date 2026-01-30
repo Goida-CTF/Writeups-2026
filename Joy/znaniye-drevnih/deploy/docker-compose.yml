@@ -40,7 +40,7 @@ services:
       TASK_DATA_PATH: /app/data/
       TASK_PARTS_REQUIRED: 0
       TASK_PART_TIMEOUT: 30s
-      FLAG: ctf{change_me_later_tho}
+      FLAG: "${FLAG:-ctf{change_me_later_tho}}"
     networks:
       - private
     mem_limit: 1g
