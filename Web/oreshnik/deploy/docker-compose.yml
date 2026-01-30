@@ -11,7 +11,7 @@ services:
     depends_on:
       - db-oreshnik
     environment:
-      - DB_HOST=db
+      - DB_HOST=db-oreshnik
       - DB_USER=goidactf
       - DB_PASSWORD=goidactfRNTYMMY
       - DB_NAME=goidactf
