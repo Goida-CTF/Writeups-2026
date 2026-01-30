@@ -1,10 +1,21 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: ruchkami:latest
-    ports:
-      - "31337:31337"
-    container_name: ruchkami-web
-    restart: unless-stopped
+    build: .
+    restart: always
+    expose:
+      - 31337
+    networks:
+      - net
+    environment:
+      - FLAG=${FLAG}
+      - PUBLIC_HOST=${PUBLIC_HOST:-localhost:31337}
+    labels:
+      - owl.proxy=true
+      - owl.proxy.port=31337
+      - owl.label.conntype=http
+      - owl.label.comment=CSRF + SSTI challenge
+
+networks:
+  net:
+    external:
+      name: ctfd_frp_containers
