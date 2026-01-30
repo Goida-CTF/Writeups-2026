@@ -9,7 +9,7 @@ services:
     networks:
       - net
     depends_on:
-      - db
+      - db-oreshnik
     environment:
       - DB_HOST=db
       - DB_USER=goidactf
