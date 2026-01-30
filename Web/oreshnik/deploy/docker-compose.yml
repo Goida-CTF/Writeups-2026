@@ -3,6 +3,11 @@ services:
     build: .
     # ports:
     #   - "8099:8080"
+    expose:
+      - "8080"
+    restart: always
+    networks:
+      - net
     depends_on:
       - db
     environment:
@@ -11,12 +16,21 @@ services:
       - DB_PASSWORD=goidactfRNTYMMY
       - DB_NAME=goidactf
       - DB_PORT=5432
-      - FLAG=goidactf{or3shk1_b1g_b0b_1s_h3r3}
+      - FLAG=${FLAG}
+    labels:
+      - owl.proxy=true
+      - owl.proxy.port=8080
+      - owl.label.conntype=http
 
   db-oreshnik:
     image: postgres:13-alpine
+    restart: always
     environment:
       - POSTGRES_USER=goidactf
       - POSTGRES_PASSWORD=goidactfRNTYMMY
       - POSTGRES_DB=goidactf
-  
+
+networks:
+  net:
+    external:
+      name: ctfd_frp_containers
