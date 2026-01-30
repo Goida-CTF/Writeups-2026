@@ -82,8 +82,8 @@ services:
 
 networks:
   exported:
-    external:
-      name: ctfd_frp_containers
+    external: true
+    name: ctfd_frp_containers
   private:
-    external:
-      name: CTFD_PRIVATE_NETWORK
+    external: true
+    name: CTFD_PRIVATE_NETWORK
