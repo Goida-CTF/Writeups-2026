@@ -1,0 +1,89 @@
+name: znaniye-drevnih
+
+services:
+  piston:
+    build:
+      context: ./docker/piston/
+      dockerfile: piston.Dockerfile
+    restart: always
+    # ports:
+    #   - 127.0.0.1:2000:2000
+    expose:
+      - 2000
+    tmpfs:
+      - /tmp:exec
+    environment:
+      TZ: Europe/Moscow
+    networks:
+      - private
+    privileged: true
+    mem_limit: 1g
+    mem_reservation: 512m
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/backend.Dockerfile
+    restart: always
+    # ports:
+    #   - 127.0.0.1:8080:8080
+    expose:
+      - 8080
+    volumes:
+      - ./data/:/app/data/:ro
+    environment:
+      TZ: Europe/Moscow
+      PISTON_API_TIMEOUT: 5m
+      PISTON_MEMORY_LIMIT: 268435456
+      HTTP_HOST: 0.0.0.0
+      HTTP_PORT: 8080
+      TASK_DATA_PATH: /app/data/
+      TASK_PARTS_REQUIRED: 0
+      TASK_PART_TIMEOUT: 30s
+      FLAG: ctf{change_me_later_tho}
+    networks:
+      - private
+    mem_limit: 1g
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/frontend/frontend.Dockerfile
+    restart: always
+    depends_on:
+      - backend
+    expose:
+      - 80
+    environment:
+      TZ: Europe/Moscow
+    networks:
+      - private
+
+  nginx:
+    image: nginx:1.29.3-alpine3.22
+    restart: always
+    depends_on:
+      - backend
+      - frontend
+    # ports:
+    #   - 127.0.0.1:8080:80
+    expose:
+      - 80
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      TZ: Europe/Moscow
+    networks:
+      - exported
+    labels:
+      owl.proxy: true
+      owl.proxy.port: 80
+      owl.label.conntype: http
+
+networks:
+  exported:
+    external:
+      name: ctfd_frp_containers
+  private:
+    external:
+      name: CTFD_PRIVATE_NETWORK

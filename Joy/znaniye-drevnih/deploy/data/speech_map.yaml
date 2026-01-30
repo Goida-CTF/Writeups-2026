@@ -1,0 +1,140 @@
+dialogs:
+  start:
+    - id: 1
+      role: slav
+      audio: dialogs/start/dialog1_slav.mp3
+      text: |
+        Здравствуй, славянин!
+        Вовремя пришёл ты.
+
+        Чуешь ли?
+        Земля дрожит.
+
+        То ящеры окаянные вновь шевелятся в норах своих.
+
+        Грядёт битва с ящерами окаянными -
+        за Русь-матушку,
+        за ведание исконное!
+    - id: 2
+      role: zuck
+      audio: dialogs/start/dialog2_zuck.mp3
+      text: |
+        Поздно, человек.
+        Русь ваша ослабла.
+
+        Вы утратили речь силы,
+        забыли знаки,
+        променяли ведание
+        на пустые символы.
+
+        Некому больше говорить
+        на языке древних.
+    - id: 3
+      role: slav
+      audio: dialogs/start/dialog3_slav.mp3
+      text: |
+        Лжёшь, тварь подземная.
+
+        Не мертво Знание - дремлет.
+
+        И всякий, в ком кровь Руси тепла,
+        способен пробудить его.
+    - role: slav
+      audio: dialogs/start/dialog4_slav.mp3
+      text: |
+        Славянин, используй речь древнюю -
+        не для слабых очей писанную,
+        не для суетных умов сотворённую,
+        да православную и мудрую.
+
+        В ней нет чуждых рун,
+        нет лживых слов,
+        лишь действие
+        да результат истинный.
+    - role: slav
+      audio: dialogs/start/dialog5_slav.mp3
+      text: |
+        Да будет бой великий и правый.
+
+        Испей воды Байкальской,
+        укрепи дух...
+
+        ...и погнали!
+
+phrases:
+  fail:
+    - role: slav
+      audio: phrases/fail/fail1_slav.mp3
+      text: |
+        Рука твоя спешит.
+        Мысль должна идти впереди!
+    - role: slav
+      audio: phrases/fail/fail2_slav.mp3
+      text: |
+        Соберись, воин!
+        Битва ещё не окончена.
+    - role: slav
+      audio: phrases/fail/fail3_slav.mp3
+      text: |
+        Не так начертал ты знаки.
+        Попробуй вновь.
+    - role: slav
+      audio: phrases/fail/fail4_slav.mp3
+      text: |
+        Каждый промах - урок.
+        Усвой его.
+    - role: zuck
+      audio: phrases/fail/fail1_zuck.mp3
+      text: |
+        Слаб удар, человек.
+        Даже знак не удержал.
+    - role: zuck
+      audio: phrases/fail/fail2_zuck.mp3
+      text: |
+        И это - Знание?
+        Жалкое зрелище.
+    - role: zuck
+      audio: phrases/fail/fail3_zuck.mp3
+      text: |
+        Видишь?
+        Язык не слушается тебя.
+    - role: zuck
+      audio: phrases/fail/fail4_zuck.mp3
+      text: |
+        Ты снова ошибся.
+        Предсказуемо.
+  steps:
+    - role: slav
+      audio: phrases/steps/fugas-perunov.mp3
+      text: |
+        Получайте, изуверы ящерские!
+        Фугас перунов!
+    - role: slav
+      audio: phrases/steps/ispil-voditsy-baikalskoi-i-pognal.mp3
+      text: |
+        Испил водицы Байкальской, и погнал!
+    - role: slav
+      audio: phrases/steps/poluchaite-irody-iashcherskie.mp3
+      text: |
+        Получайте, ироды ящерские!
+    - role: slav
+      audio: phrases/steps/rusy-peite-vodu-iz-baikala.mp3
+      text: |
+        Русы, пейте воду из Байкала!
+  win:
+    - role: slav
+      audio: phrases/win/win_slav.mp3
+      text: |
+        Доказал ты ведание своё, славянин.
+        Не словом единым -
+        делом, знаком,
+        мыслью крепкой.
+
+        В бою праведном ты устоял,
+        ящеров окаянных одолел,
+        речи их лживые сокрушил,
+        а Знание древнее - пробудил.
+
+        Русь-матушка гордится тобой, богатырь русский.
+        Держи флаг славянский.
+        И неси его с честью!
