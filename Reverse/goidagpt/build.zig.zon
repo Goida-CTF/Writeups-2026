@@ -1,0 +1,12 @@
+.{
+    .name = .goidagpt,
+    .version = "1.0.0",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "weights.json",
+    },
+    .fingerprint = 0x37ee44c87bea5169,
+}
