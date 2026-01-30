@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "crystalstatsmod",
+  "version": "${version}",
+  "name": "Crystal Stats Mod",
+  "description": "A lightweight client-side utility mod that displays system diagnostics including FPS, memory usage, and security token information on your HUD.",
+  "authors": [
+    "CrystalDev Team"
+  ],
+  "contact": {
+    "homepage": "https://github.com/crystaldev/crystalstatsmod",
+    "sources": "https://github.com/crystaldev/crystalstatsmod"
+  },
+  "license": "MIT",
+  "icon": "assets/crystalstatsmod/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "ru.goida.crystalstatsmod.CrystalStatsMod"
+    ],
+    "client": [
+      "ru.goida.crystalstatsmod.client.CrystalStatsModClient"
+    ]
+  },
+  "mixins": [
+    "crystalstatsmod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.4",
+    "java": ">=21"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
