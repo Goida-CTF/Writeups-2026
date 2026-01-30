@@ -74,6 +74,7 @@ services:
     environment:
       TZ: Europe/Moscow
     networks:
+      - private
       - exported
     labels:
       owl.proxy: true
@@ -82,8 +83,10 @@ services:
 
 networks:
   exported:
+    # driver: bridge
     external: true
     name: ctfd_frp_containers
   private:
+    # driver: bridge
     external: true
     name: CTFD_PRIVATE_NETWORK
