@@ -15,7 +15,7 @@ services:
     environment:
       TZ: Europe/Moscow
     networks:
-      - private
+      - CTFD_PRIVATE_NETWORK
     privileged: true
     mem_limit: 1g
     mem_reservation: 512m
@@ -40,9 +40,9 @@ services:
       TASK_DATA_PATH: /app/data/
       TASK_PARTS_REQUIRED: 0
       TASK_PART_TIMEOUT: 30s
-      FLAG: "${FLAG:-ctf{change_me_later_tho}}"
+      FLAG: "${FLAG:?FLAG_env_var_not_set}"
     networks:
-      - private
+      - CTFD_PRIVATE_NETWORK
     mem_limit: 1g
 
   frontend:
@@ -57,7 +57,7 @@ services:
     environment:
       TZ: Europe/Moscow
     networks:
-      - private
+      - CTFD_PRIVATE_NETWORK
 
   nginx:
     image: nginx:1.29.3-alpine3.22
@@ -74,7 +74,7 @@ services:
     environment:
       TZ: Europe/Moscow
     networks:
-      - private
+      - CTFD_PRIVATE_NETWORK
       - exported
     labels:
       owl.proxy: true
@@ -86,7 +86,4 @@ networks:
     # driver: bridge
     external: true
     name: ctfd_frp_containers
-  private:
-    # driver: bridge
-    external: true
-    name: CTFD_PRIVATE_NETWORK
+  CTFD_PRIVATE_NETWORK:
