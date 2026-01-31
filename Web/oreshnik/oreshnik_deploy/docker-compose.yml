@@ -8,6 +8,7 @@ services:
     restart: always
     networks:
       - net
+      - CTFD_PRIVATE_NETWORK
     depends_on:
       - db-oreshnik
     environment:
@@ -25,12 +26,15 @@ services:
   db-oreshnik:
     image: postgres:13-alpine
     restart: always
+    networks:
+      - CTFD_PRIVATE_NETWORK
     environment:
       - POSTGRES_USER=goidactf
       - POSTGRES_PASSWORD=goidactfRNTYMMY
       - POSTGRES_DB=goidactf
 
 networks:
+  CTFD_PRIVATE_NETWORK:
   net:
     external:
       name: ctfd_frp_containers
