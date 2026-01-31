@@ -3,8 +3,8 @@ services:
     build: .
     restart: always
     mem_limit: 2g
-    expose:
-      - 31337
+    ports:
+      - "31337:31337"
     networks:
       - net
     environment:
@@ -13,7 +13,7 @@ services:
     labels:
       - owl.proxy=true
       - owl.proxy.port=31337
-      - owl.label.conntype=http
+      - owl.label.conntype=https
       - owl.label.comment=GLHF!
 
 networks:
