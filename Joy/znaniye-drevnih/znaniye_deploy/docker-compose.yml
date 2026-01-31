@@ -1,5 +1,3 @@
-name: znaniye-drevnih
-
 services:
   piston:
     build:
