@@ -11,7 +11,7 @@ while len(lines) < 3 or any(x.strip() != "" for x in lines[-3:]):
     lines.append(input())
 code = "\n".join(lines)
 
-nonce = "c25ffda27ad34612"
+nonce = secrets.token_hex(8)
 os.mkdir(f"/chroot/opt/{nonce}")
 with open(f"/chroot/opt/{nonce}/flag.txt", "w") as f:
     f.write(os.getenv("FLAG", "flag{test_flag}"))
