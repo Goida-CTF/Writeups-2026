@@ -3,8 +3,8 @@ services:
     build: .
     restart: always
     mem_limit: 2g
-    ports:
-      - "31337:31337"
+    expose:
+      - 31337
     networks:
       - net
     environment:
