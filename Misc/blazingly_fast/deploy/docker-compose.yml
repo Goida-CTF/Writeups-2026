@@ -12,6 +12,7 @@ services:
       - owl.proxy=true
       - owl.proxy.port=1337
       - owl.label.conntype=nc
+    privileged: true
 
 networks:
   net:
