@@ -1,0 +1,20 @@
+name: task-blazingly-fast
+services:
+  task:
+    build: .
+    restart: always
+    expose:
+      - 1337
+    networks:
+      - net
+    environment:
+      - FLAG=${FLAG}
+    labels:
+      - owl.proxy=true
+      - owl.proxy.port=1337
+      - owl.label.conntype=nc
+
+networks:
+  net:
+    external:
+      name: ctfd_frp_containers
