@@ -32,11 +32,13 @@ def get_url():
     url = data['url']
     
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument("start-maximized")
-    chrome_options.add_argument("mixed-forms-interstitial@2")
+    chrome_options.add_argument("--disable-features=InsecureFormSubmissionMixedContentWarning")
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--allow-insecure-localhost")
     
     chromium_path = os.getenv('CHROMIUM_PATH')
     if chromium_path:
@@ -120,4 +122,10 @@ def admin_page():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=31337)
+    import os
+    cert_dir = os.path.join(os.path.dirname(__file__), 'certs')
+    ssl_context = (
+        os.path.join(cert_dir, 'server.crt'),
+        os.path.join(cert_dir, 'server.key')
+    )
+    app.run(host='0.0.0.0', port=31337, ssl_context=ssl_context)
