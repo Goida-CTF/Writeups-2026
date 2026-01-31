@@ -2,6 +2,7 @@ services:
   web:
     build: .
     restart: always
+    mem_limit: 2g
     expose:
       - 31337
     networks:
@@ -13,7 +14,7 @@ services:
       - owl.proxy=true
       - owl.proxy.port=31337
       - owl.label.conntype=http
-      - owl.label.comment=CSRF + SSTI challenge
+      - owl.label.comment=GLHF!
 
 networks:
   net:
