@@ -49,7 +49,7 @@ def get_url():
     status_code = response.status_code
     print(status_code)
 
-    public_host = os.getenv('PUBLIC_HOST', 'csrftask.goidactfer228.ru:31337')
+    public_host = os.getenv('PUBLIC_HOST', 'tasks.goidactf.ru')
     if ":" in public_host:
         public_domain = public_host.split(':')[0]
     else:
