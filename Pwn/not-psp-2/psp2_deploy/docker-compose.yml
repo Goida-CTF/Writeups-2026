@@ -1,4 +1,3 @@
-name: task-not-psp
 services:
   task:
     build: .
@@ -13,6 +12,11 @@ services:
       - owl.proxy=true
       - owl.proxy.port=8000
       - owl.label.conntype=http
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 200M
 
 networks:
   net:

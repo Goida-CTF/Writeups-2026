@@ -1,18 +1,17 @@
-name: task-blazingly-fast
 services:
   task:
     build: .
     restart: always
     expose:
-      - 1337
+      - 8000
     networks:
       - net
     environment:
       - FLAG=${FLAG}
     labels:
       - owl.proxy=true
-      - owl.proxy.port=1337
-      - owl.label.conntype=nc
+      - owl.proxy.port=8000
+      - owl.label.conntype=http
 
 networks:
   net:
