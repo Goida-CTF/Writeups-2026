@@ -1,4 +1,3 @@
-name: task-not-psp
 services:
   task:
     build: .
