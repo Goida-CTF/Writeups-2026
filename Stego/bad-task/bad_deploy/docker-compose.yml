@@ -19,6 +19,6 @@ services:
 
 networks:
   exported:
-    driver: bridge
-    # external: true
+    # driver: bridge
+    external: true
     name: ctfd_frp_containers
