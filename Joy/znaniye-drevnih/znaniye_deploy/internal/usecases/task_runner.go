@@ -31,6 +31,11 @@ func (u *UseCases) RunTask(ctx context.Context,
 		CouldRun:           true,
 		ContainsNonRuChars: containsNonRuChars,
 	}
+	// BUG: I forgot to put back this part...
+	// if containsNonRuChars {
+	// 	result.CouldRun = false
+	// 	return result, nil
+	// }
 
 	for _, test := range task.Tests {
 		if len(test.AnyOf) > 0 {
