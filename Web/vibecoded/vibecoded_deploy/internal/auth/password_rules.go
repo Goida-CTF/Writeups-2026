@@ -14,7 +14,7 @@ const (
 	textNoLowercase = "password should contain at least one lowercase letter"
 	textNoSpecial   = "password should contain at least one special character"
 	textTooLong     = "password is too secure: maximum 32 characters"
-	textUnallowed   = "password is too secure: contains anallowed characters"
+	textUnallowed   = "password is too secure: contains unallowed characters"
 	textCollisionF  = "password is already taken by user %s\nsuggested passwords: %s"
 )
 
