@@ -4,7 +4,7 @@
 Когда-то давным-давно, Знание Древних использовалось Древними Русами для победы над Ящерами. Восстанови истоки истории - покажи своё обладание Знанием Древних!
 
 ## Деплой
-[`./deploy/README.md`](./deploy/README.md)
+[`./znaniye_deploy/README.md`](./znaniye_deploy/README.md)
 
 ## Решение
 [`./solution/README.md`](./solution/README.md)
