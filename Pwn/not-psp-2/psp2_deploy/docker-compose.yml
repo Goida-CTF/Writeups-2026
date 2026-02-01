@@ -12,11 +12,9 @@ services:
       - owl.proxy=true
       - owl.proxy.port=8000
       - owl.label.conntype=http
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 200M
+    mem_limit: 200M
+    cpus: 0.5
+
 
 networks:
   net:

@@ -13,6 +13,8 @@ services:
       - owl.proxy.port=1337
       - owl.label.conntype=nc
     privileged: true
+    mem_limit: 2g
+    cpus: 0.5
 
 networks:
   net:
