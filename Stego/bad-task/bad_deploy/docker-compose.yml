@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: ./docker/backend/backend.Dockerfile
     restart: always
-    ports:
-      - 127.0.0.1:5010:5010
+    # ports:
+    #   - 127.0.0.1:5010:5010
     expose:
       - 5010
     volumes:
