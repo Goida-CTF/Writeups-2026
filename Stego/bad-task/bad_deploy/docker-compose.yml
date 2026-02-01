@@ -1,0 +1,24 @@
+services:
+  tcp:
+    build:
+      context: .
+      dockerfile: ./docker/backend/backend.Dockerfile
+    restart: always
+    ports:
+      - 127.0.0.1:5010:5010
+    expose:
+      - 5010
+    volumes:
+      - ./data/:/app/data/:ro
+    networks:
+      - exported
+    labels:
+      owl.proxy: true
+      owl.proxy.port: 5010
+      owl.label.conntype: nc
+
+networks:
+  exported:
+    driver: bridge
+    # external: true
+    name: ctfd_frp_containers
