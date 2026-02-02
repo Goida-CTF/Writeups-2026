@@ -10,6 +10,17 @@
 Вайбкодеры часто не осознают какой функционал был добавлен в их приложение после очередного промпта.
 </details>
 
+<details>
+<summary><b>Хинт 2</b></summary>
+Каптча - твой враг, для решения понадобится лишь в самом конце, а в начале <b>не</b> на неё заострить внимание нужно
+</details>
+
+<details>
+<summary><b>Хинт 3</b></summary>
+Зацените песню, не рикролл
+<a href="https://youtu.be/-tJYN-eG1zk">https://youtu.be/dQw4w9WgXcQ</a>
+</details>
+
 ## Деплой
 [`./vibecoded_deploy/README.md`](./vibecoded_deploy/README.md)
 
